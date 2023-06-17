@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://pixijs.download/v7.2.4/pixi.min.js"></script>
+  <style>
+    * {padding: 0; margin: 0}
+  </style>
+</head>
+<body>
+  <script type="text/javascript">
+    let type = "WebGL"
+    if(!PIXI.utils.isWebGLSupported()){
+      type = "canvas"
+    }
+    // PIXI.utils.sayHello(type)
+
+    // 创建Pixi应用程序和stage（舞台）
+    let app = new PIXI.Application({ 
+      width: 256,         // default: 800 宽度
+      height: 256,        // default: 600 高度
+      antialias: true,    // default: false 反锯齿
+      transparent: false, // default: false 透明度
+      resolution: 1       // default: 1 分辨率
+    });
+    document.body.appendChild(app.view);
+
+    // 创建画布后需要更改背景颜色，请将app.renderer对象的backgroundColor属性设置为十六进制颜色值
+    app.renderer.background.color = 0x061639;
+
+    // 如果您想查看渲染器的宽度或高度，请使用app.renderer.view.width和app.renderer.view.height。
+
+    // 要更改画布的大小，请使用renderer的resize方法，并提供任何新的width和height值。但是，为了确保画布的大小调整到与分辨率匹配，请将autoResize设置为true
+    app.renderer.autoResize = true;
+    app.renderer.resize(512, 512);
+
+    // 如果您想让canvas画布填充整个窗口，您可以应用下面的CSS样式并将渲染器的大小调整到浏览器窗口的大小
+    app.renderer.view.style.position = "absolute";
+    app.renderer.view.style.display = "block";
+    app.renderer.autoResize = true;
+    app.renderer.resize(window.innerWidth, window.innerHeight);
+  </script>
+
+</body>
+</html>
